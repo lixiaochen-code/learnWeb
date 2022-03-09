@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运动</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background: rgb(135, 0, 0);
+            box-sizing: border-box;
+            border: 2px solid yellowgreen;
+            position: absolute;
+            top: 0;
+            left: 1000px;
+        }
+
+        #btn {
+            margin-top: 200px;
+        }
+        .target {
+            position: absolute;
+            top: 0;
+            left: 500px;
+            height: 100px;
+            width: 1px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <button id="btn">开始运动🏊‍♀️</button>
+    <span class="target"></span>
+    <script>
+        var box = document.querySelector(".box");
+        var btn = document.querySelector('#btn');
+        var target = document.querySelector('.target').offsetLeft;
+        var timer = null;
+        btn.onclick = () => {
+            // clearInterval(timer);
+            // var iSpeed = target > box.offsetLeft ? 7 : -7;
+            // timer = setInterval(() => {
+            //     if(Math.abs(target - box.offsetLeft) < Math.abs(iSpeed)) {
+            //         box.style.left = target + 'px';
+            //         clearTimeout(timer);
+            //     } else{
+            //         box.style.left = box.offsetLeft + iSpeed + 'px';
+            //     }
+            // }, 25)
+            startMove(box, target)
+        }
+        // 匀速运动
+        function move(dom, target) {
+            clearInterval(timer);
+            var iSpeed = target > dom.offsetLeft ? 7 : -7;
+            timer = setInterval(() => {
+                if(Math.abs(target - dom.offsetLeft) < Math.abs(iSpeed)) {
+                    dom.style.left = target + 'px';
+                    clearTimeout(timer);
+                } else{
+                    dom.style.left = dom.offsetLeft + iSpeed + 'px';
+                }
+            }, 25)
+        }
+        // 缓冲运动 距离目标点越近 速度越小
+        function startMove(dom, target) {
+            clearInterval(timer);
+            var iSpeed;
+            timer = setInterval(() => {
+                iSpeed = (target - dom.offsetLeft) / 7;
+                console.log(iSpeed)
+                if(Math.abs(iSpeed) < 1) {
+                    dom.style.left = target + 'px';
+                    clearTimeout(timer);
+                } else{
+                    dom.style.left = dom.offsetLeft + iSpeed + 'px';
+                }
+            }, 25)
+        }
+    </script>
+</body>
+
+</html>
