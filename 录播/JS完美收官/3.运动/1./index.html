@@ -8,19 +8,20 @@
     <title>运动</title>
     <style>
         .box {
-            width: 100px;
-            height: 100px;
+            width: 200px;
+            height: 200px;
             background: rgb(135, 0, 0);
             box-sizing: border-box;
             border: 2px solid yellowgreen;
             position: absolute;
             top: 0;
-            left: 1000px;
+            left: 0px;
         }
 
         #btn {
             margin-top: 200px;
         }
+
         .target {
             position: absolute;
             top: 0;
@@ -29,6 +30,23 @@
             width: 1px;
             background-color: black;
         }
+
+        .wrapper {
+            width: 400px;
+            height: 80px;
+            background-color: goldenrod;
+            position: absolute;
+            left: -320px;
+            top: 400px;
+        }
+
+        .wrapper div {
+            width: 80px;
+            height: 80px;
+            background-color: blueviolet;
+            position: absolute;
+            right: 0;
+        }
     </style>
 </head>
 
@@ -36,6 +54,10 @@
     <div class="box"></div>
     <button id="btn">开始运动🏊‍♀️</button>
     <span class="target"></span>
+
+    <div class="wrapper">
+        <div></div>
+    </div>
     <script>
         var box = document.querySelector(".box");
         var btn = document.querySelector('#btn');
@@ -52,36 +74,129 @@
             //         box.style.left = box.offsetLeft + iSpeed + 'px';
             //     }
             // }, 25)
-            startMove(box, target)
+            // allMove(box,'left',0)
+            AllMove(box, { width: 100, left: 100, opacity: 1000 }, function () {
+                AllMove(box, { width: 200, opacity: 700 }, function () {
+                    AllMove(box, { width: 100, left: 200, opacity: 1000 }, function () {
+                        AllMove(box, { width: 200, left: 200, opacity: 700 }, function () {
+                            AllMove(box, { width: 100, left: 300, opacity: 1000 }, function () {
+                                AllMove(box, { width: 200, left: 300, opacity: 700 }, function () {
+                                    AllMove(box, { width: 100, left: 400, opacity: 1000 }, function () {
+                                        AllMove(box, { width: 200, left: 400, opacity: 700 }, function () {
+                                            AllMove(box, { width: 100, left: 500, opacity: 1000 }, function () {
+
+                                            })
+                                        })
+                                    })
+                                })
+                            })
+                        })
+                    })
+                })
+            })
+        }
+        function getStyle(dom, attr) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(dom, null)[attr];
+            } else {
+                return dom.currentStyle[attr];
+            }
+        }
+        var wrapper = document.querySelector(".wrapper");
+        wrapper.onmouseover = () => {
+            startMove(wrapper, 0)
+        }
+        wrapper.onmouseout = () => {
+            startMove(wrapper, -320)
         }
         // 匀速运动
         function move(dom, target) {
             clearInterval(timer);
             var iSpeed = target > dom.offsetLeft ? 7 : -7;
             timer = setInterval(() => {
-                if(Math.abs(target - dom.offsetLeft) < Math.abs(iSpeed)) {
+                if (Math.abs(target - dom.offsetLeft) < Math.abs(iSpeed)) {
                     dom.style.left = target + 'px';
                     clearTimeout(timer);
-                } else{
+                } else {
                     dom.style.left = dom.offsetLeft + iSpeed + 'px';
                 }
             }, 25)
         }
+
         // 缓冲运动 距离目标点越近 速度越小
         function startMove(dom, target) {
             clearInterval(timer);
-            var iSpeed;
+            var iSpeed = null;
             timer = setInterval(() => {
                 iSpeed = (target - dom.offsetLeft) / 7;
-                console.log(iSpeed)
-                if(Math.abs(iSpeed) < 1) {
-                    dom.style.left = target + 'px';
+                // ceil 向上取整    floor 向下取整
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                console.log(iSpeed);
+                if (dom.offsetLeft == target) {
+                    // dom.style.left = target + 'px';
                     clearTimeout(timer);
-                } else{
+                } else {
                     dom.style.left = dom.offsetLeft + iSpeed + 'px';
                 }
-            }, 25)
+            }, 8)
         }
+
+        // 透明度的缓冲变化
+        function opacityMove(dom, target) {
+            clearInterval(dom.timer)
+            var icur = null, iSpeed = null;
+            dom.timer = setInterval(() => {
+                icur = parseFloat(getStyle(dom, 'opacity')) * 1000;
+                iSpeed = (target * 1000 - icur) / 5;
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                console.log(icur, iSpeed)
+                if (icur == target * 1000) {
+                    clearTimeout(dom.timer);
+                } else {
+                    dom.style.opacity = (icur + iSpeed) / 1000 + '';
+                }
+            }, 20)
+        }
+
+        // 多物体多值运动
+        function allMove(dom, attr, target) {
+            clearInterval(dom.timer);
+            var icur = null, iSpeed = null;
+            dom.timer = setInterval(() => {
+                icur = attr == 'opacity' ? parseFloat(getStyle(dom, attr)) * 1000 : parseFloat(getStyle(dom, attr));
+                iSpeed = attr == 'opacity' ? (target - icur) / 5 : (target - icur) / 5;
+                iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                if (icur == target) {
+                    clearTimeout(dom.timer);
+                }
+                console.log(icur)
+                dom.style[attr] = attr == "opacity" ? (icur + iSpeed) / 1000 : icur + iSpeed + 'px';
+            }, 20);
+        }
+
+        // 
+        function AllMove(dom, attrObj, callBack) {
+            clearInterval(dom.timer);
+            var icur, iSpeed;
+            dom.timer = setInterval(() => {
+                var oStop = true;
+                for (const attr in attrObj) {
+                    icur = attr == 'opacity' ? parseFloat(getStyle(dom, attr)) * 1000 : parseInt(getStyle(dom, attr));
+                    iSpeed = (attrObj[attr] - icur) / 7;
+                    iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+                    dom.style[attr] = attr == "opacity" ? (icur + iSpeed) / 1000 : icur + iSpeed + 'px';
+                    if (icur != attrObj[attr]) {
+                        oStop = false;
+                    }
+                }
+                if (oStop) {
+                    clearInterval(dom.timer);
+                    typeof callBack == "function" && callBack();
+                }
+            }, 30)
+        }
+
+
     </script>
 </body>
 
