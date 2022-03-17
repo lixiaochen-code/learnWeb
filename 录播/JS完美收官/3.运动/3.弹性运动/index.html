@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹性运动</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: blueviolet;
+            position: absolute;
+            left: 200px;
+            top: 0;
+        }
+        .target {
+            width: 1px;
+            height: 100px;
+            position: absolute;
+            left: 700px;
+            top: 0;
+            background-color: black;
+        }
+        .btn {
+            margin-top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <span class="target"></span>
+    <button class="btn">确定</button>
+    <script>
+        var box = document.querySelector(".box");
+        var btn = document.querySelector(".btn");
+        var target = document.querySelector(".target").offsetLeft;
+        btn.onclick = ()=>{
+            box.timer = null;
+            var a = null,
+                iSpeed = 0,
+                icur = null;
+            box.timer = setInterval(()=>{
+                icur = box.offsetLeft;
+                a = target > icur ? 1 : -1;
+                iSpeed = iSpeed + a;
+                box.style.left = iSpeed + icur + "px";
+            },30)
+        }
+    </script>
+</body>
+</html>
