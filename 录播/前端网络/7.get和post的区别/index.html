@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.get和post的区别</title>
+</head>
+
+<body>
+    <pre style="font-size: 20px;">
+        Get与Post请求⽅方式的区别
+        1.	是基于什什么前提的？如果什什么前提都没有，不不使⽤用任何规范，只考虑语法和理理论上的
+    HTTP协议。 
+      GET和POST⼏几乎没有什什么区别，只有名字不不⼀一样。 
+        2.	如果是基于RFC规范的。 
+        （1）理理论上的（Specification）：
+            GET和POST具有相同语法的，但是有不不同的语义。 get是⽤用来获取数据的，post是⽤用来发送数据的，其他⽅方⾯面没有区别。       
+        
+        （2）实现上的（Implementation）：各种浏览器器，就是这个规范的实现者。                
+            常⻅见的那些不不同： 
+            1）	GET的数据在URL是可⻅见的。POST请求不不显示在URL中。 
+            2）	GET对⻓长度是有限制的，POST⻓长度是⽆无限的。 
+            3）	GET请求的数据可以收藏为书签，post请求到的数据不不可收藏为书签。 
+            4）	GET请求后，按后退按钮、刷新按钮⽆无影响，post数据会被重新提交。 
+            5）	GET编码类型：application/x-www-form-url，
+                post的编码类型：有很多种。常见的
+                encodeapplication/x-www-form-urlencoded  加密的   multipart/form-data  符合数据
+            6）	GET历史参数会被保留留在浏览器器⾥里里，psot不不会保存在浏览器器中的。 
+            7）	GET只允许ASCII. post没有编码限制，允许发⼆进制的。 
+            8）	GET与POST相⽐比，GET安全性较差，因为所发的数据是URL的⼀一部分。
+            Cookie与Session
+
+    </pre>
+</body>
+
+</html>

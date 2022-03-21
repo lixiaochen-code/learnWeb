@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽实例</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 62, 62);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        let box = document.querySelector(".box");
+
+        box.onmousedown = function (e) {
+            let X = e.pageX - this.offsetLeft;
+            let Y = e.pageY - this.offsetTop;
+            let icurX, icurY;
+            let boxX, boxY;
+            let iSpeedX, iSpeedY;
+            document.onmousemove = function (e) {
+                icurX = e.pageX - X;
+                icurY = e.pageY - Y;
+                box.style.left = boxX + "px";
+                box.style.top = boxY + "px";
+                iSpeedX = icurX - boxX;
+                iSpeedY = icurY - boxY;
+                boxX = e.pageX - X;
+                boxY = e.pageY - Y;
+            }
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                box.style.left = boxX + "px";
+                box.style.top = boxY + "px";
+                move(box, iSpeedX, iSpeedY);
+            }
+        }
+
+        function move(dom, iSpeedX, iSpeedY) {
+            clearInterval(dom.timer);
+            let g = 9;
+            dom.timer = setInterval(() => {
+                iSpeedY += g;
+                let newTop = dom.offsetTop + iSpeedY;
+                let newLeft = dom.offsetLeft + iSpeedX;
+                if (newLeft >= document.documentElement.clientWidth - dom.offsetWidth) {
+                    iSpeedX *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newLeft = document.documentElement.clientWidth - dom.offsetWidth;
+                }
+                if (newTop >= document.documentElement.clientHeight - dom.offsetHeight) {
+                    iSpeedY *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newTop = document.documentElement.clientHeight - dom.offsetHeight;
+                }
+                if (newLeft <= 0) {
+                    iSpeedX *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newLeft = 0;
+                }
+                if (newTop <= 0) {
+                    iSpeedY *= -1;
+                    iSpeedX *= 0.8;
+                    iSpeedY *= 0.8;
+                    newTop = 0;
+                }
+                if (Math.abs(iSpeedX) <= 1) {
+                    iSpeedX = 0;
+                }
+                if (Math.abs(iSpeedY) < 1) {
+                    iSpeedY = 0;
+                }
+                if (iSpeedX == 0 && iSpeedY == 0 && newTop == document.documentElement.clientHeight - dom.offsetHeight) {
+                    clearInterval(dom.timer);
+                } else {
+                    dom.style.left = newLeft + "px";
+                    dom.style.top = newTop + "px";
+                }
+
+            }, 20);
+        }
+    </script>
+</body>
+
+</html>
