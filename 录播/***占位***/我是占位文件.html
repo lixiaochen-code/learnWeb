@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>验证码</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#add{
+				width: 400px;
+				height: 300px;
+ 			}
+			#div{
+				float: left;
+				width: 250px;
+				height: 50px;
+			}
+			#box{
+				width: 50px;
+				height: 30px;
+				border: 1px solid blue;
+				float: left;
+				background: #008000;
+				text-align: center;
+				line-height: 30px;
+				margin-top: 15px;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div id="add">
+			<input id="div" type="text" placeholder="请输入验证码"/>
+			<div id="box">waLH</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		//获取
+		var add=document.getElementById("add");
+		var div=document.getElementById("div");
+		var box=document.getElementById("box");
+		div.οnblur=function()//文本框失去焦点
+		{
+			var str=div.value;
+			var str1=box.innerHTML;
+			console.log(str);//测试
+			console.log(str1);//测试
+			if (str.toUpperCase()==str1.toUpperCase())//把字符串转换为大写
+			{
+				alert("正确");
+			}
+			else
+			{
+				alert("错误");
+			}
+		}
+		box.οnclick=function()//按钮的点击事件
+		{
+			var a=[];
+			for(var i=97;i<122;i++)//a-z【97--122】  小写
+			{
+				var ss=String.fromCharCode(i);//根据编码返回字符
+				a.push(ss);
+			}
+			for (var i=65;i<90;i++)//A-Z【65--90】   大写
+			{
+				var dd=String.fromCharCode(i);//根据编码返回字符
+				a.push(dd);
+			}
+			var y=[];
+			for(var i=1;i<=4;i++)
+			{
+				var index  = parseInt(Math.random()*a.length);
+				var ch = a[index];
+				y.push(ch);
+			}
+			var str = y.join("");
+			box.innerHTML = str;
+		}
+	</script>
+</html>
