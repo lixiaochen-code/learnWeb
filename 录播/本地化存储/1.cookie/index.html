@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookie</title>
+</head>
+
+<body>
+    <script src="Ajax.js"></script>
+    <script>
+        /* 
+            cookie
+            http 上下文无关协议
+            set-cookie 服务器设置的
+
+
+            1. cookie不可跨域
+            2. cookie是存放在浏览器里的
+            3. cookie有数量和大小的限制
+                1. 数量:50左右
+                2. 大小在4kb左右
+            4. cookie储存时间非常灵活
+            5. cookie不只可以在服务器设置，也可以在客户端设置
+            
+            document.cookie
+                可读可写
+                key:value
+                cookie 每次只可以设置一个
+
+            cookie的属性
+                1. name     cookie的名字，唯一性
+                2. value    cookie的值
+                3. domain   设置cookie在哪个域下有效（一级域名二级域名）
+                4. path     cookie的路径    有效使用的路径
+                5. expires  cookie的过期时间    具体时间点    // 1.0
+                        时间格式GMT
+                        console.log(new Date());
+                6. max-Age  cookie的有效期      具体时间段      // 1.1
+                        单位    秒
+                        -1      临时cookie
+                        0       马上就失效
+                        正数    以秒为单位
+                7. HttpOnly 有这个标记的cookie，前端无法获取
+                8. Secure   设置cookie只能通过HTTPS协议传输
+                9. SameSite 设置cookie在跨域请求的时候不能被发送（避免跨域请求被攻击）
+
+        */
+        // document.cookie = "name=lichen; age=18"  // 错误示范 一次只能设置一个
+        document.cookie = "name=lichen;";
+
+        // document.cookie = "color=red; domain=127.0.0.1; path=/doc; "
+        document.cookie = "color=red; domain=127.0.0.1;"
+        document.cookie = "margin=25; expires=" + new Date(2022,3,1,18,29);
+        // document.cookie = "padding=25; max-age=1;"   // 覆盖
+        document.cookie = "padding=25; max-age=5;"
+        setTimeout(()=>{
+            console.log(document.cookie);
+        },4000)
+        setTimeout(()=>{
+            console.log(document.cookie);
+        },5000)
+        setTimeout(()=>{
+            console.log(document.cookie);
+        },6000)
+
+        Ajax("./data.json","GET",function callback(data) {
+            console.log(data);
+        })
+
+
+    </script>
+</body>
+
+</html>

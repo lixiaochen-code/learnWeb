@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 接口：http://developer.duyiedu.com/edu/testAjaxCrossOrigin   支持跨域
+        // http://developer.duyiedu.com/edu/testAjax
+        // http://developer.duyiedu.com/edu/testJsonp?callback=abs
+
+        //因为我想从一个接口获取一个数据
+        //但是这个接口和当前页面不是同源的。（也就是跨域了）
+        //但是这个接口是支持JSONP的。
+
+        //script标签，有src属性，所以可以发出网络请求
+        //script标签，虽然可以引用其他域的资源，浏览器不限制。
+        //但是，浏览器会将返回的内容，作为js代码执行。
+
+        //asd({"status":"ok","msg":"Hello! There is DuYi education!"})
+        //相当于调用了asd方法，传入了一个json对象作为参数。
+
+
+        // 接口：http://developer.duyiedu.com/edu/testAjaxCrossOrigin
+        // http://developer.duyiedu.com/edu/testAjax
+
+
+        //jsonp格式哪里特殊？
+        //发送的时候，会带上一个参数callback
+        //返回的结果不是json
+        //callback的名 + ( + json + );
+
+        // jsonp 跨越只能使用get方法
+        // $.ajax({
+        //     url: "http://developer.duyiedu.com/edu/testAjaxCrossOrigin",
+        //     type: "post",
+        //     dataType: "jsonp",
+        //     success: function () {
+        //         console.log(data);
+        //     }
+        // })
+
+        //jsonp跨域，只能使用get方法，如果我们设置的是post方法，jquery会自动转为get方法。
+        //是不是在jsonp里面我只能使用get方法？是不是我设置的post方法都会转为get方法？
+        //不是。
+        //jquery会先判断是否同源，如果同源，那么设置的是get就是get，设置的post就是post
+        //如果不是同源，无论设置的什么，都改为get.
+
+
+
+
+        //JSONP原理：
+        //1. 判断请求与当前页面的域，是否同源，如果同源则发送正常的ajax，就没有跨域的事情了。
+        //2. 如果不同源，生成一个script标签
+        //3. 生成一个随机的callback名字，还得创建一个名为这个的方法。
+        //4. 设置script标签的src，设置为要请求的接口。
+        //5. 将callback作为参数拼接在后面。
+        //============以上是前端部分================
+        //6. 后端接收到请求后，开始准备要返回的数据
+        //7. 后端拼接数据，将要返回的数据用callback的值和括号包裹起来
+        //      例如：callback=asd123456，要返回的数据为{"a":1, "b":2},
+        //      就要拼接为：asd123456({"a":1, "b":2});
+        //8. 将内容返回。
+        //============以上是后端部分================
+        //9. 浏览器接收到内容，会当做js代码来执行。
+        //10. 从而执行名为asd123456的方法。这样我们就接收到了后端返回给我们的对象。
+
+        function abs(data) {
+            console.log(data);
+        }
+    </script>
+    <script src="http://developer.duyiedu.com/edu/testJsonp?callback=abs"></script>
+</body>
+</html>

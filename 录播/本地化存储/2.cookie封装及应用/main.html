@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.cookie封装及应用</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            color: red;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        let operateCookie = {
+            set(name,value,date){
+                document.cookie = `${name}=${value}; max-age=${date}`;
+            },
+            remove(name){
+                this.set(name,'',0);
+            },
+            get(name){
+                let pageCookie = document.cookie;
+                pageCookie = pageCookie.split("; ");
+                for(let i = 0; i < pageCookie.length; i ++) {
+                    let cook = pageCookie[i].split("=");
+                    if(cook[0] == name) {
+                        return cook[1];
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

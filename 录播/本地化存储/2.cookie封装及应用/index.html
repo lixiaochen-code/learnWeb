@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.cookie封装及应用</title>
+    <style>
+        :root,body {
+            height: 100%;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        let box = document.querySelector(".box");
+        var drag = {
+            init(dom){
+                
+            }
+        }
+        let operateCookie = {
+            // 设置cookie
+            /*
+                date 传入时间天数
+            */
+            set(name,value,date){
+                // max-age
+                document.cookie = `${name}=${value}; max-age=${date}`;
+                // expires
+                // let endDate = new Date();
+                // endDate.setDate(endDate.getDate() + date);
+                // document.cookie = `${name}=${value}; expires=${endDate}`;
+            },
+            // 删除cookie
+            remove(name){
+                this.set(name,'',0);
+            },
+            // 获取cookie
+            get(name){
+                let pageCookie = document.cookie;
+                // pageCookie = pageCookie.split("; ");
+                // let obj = {};
+                // for(let i = 0; i < pageCookie.length; i ++) {
+                //     let cook = pageCookie[i].split("=");
+                //     obj[cook[0]] = cook[1];
+                // }
+                // console.log(obj);
+                // return obj[name];
+
+                pageCookie = pageCookie.split("; ");
+                for(let i = 0; i < pageCookie.length; i ++) {
+                    let cook = pageCookie[i].split("=");
+                    if(cook[0] == name) {
+                        return cook[1];
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
