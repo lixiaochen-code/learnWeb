@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        let operateCookie = {
+            set(name, value, date) {
+                document.cookie = `${name}=${value}; max-age=${date}`;
+            },
+            remove(name) {
+                this.set(name, '', 0);
+            },
+            get(name) {
+                let pageCookie = document.cookie;
+                pageCookie = pageCookie.split("; ");
+                for (let i = 0; i < pageCookie.length; i++) {
+                    let cook = pageCookie[i].split("=");
+                    if (cook[0] == name) {
+                        return cook[1];
+                    }
+                }
+            }
+        }
+
+        let box = document.querySelector(".box");
+
+        // box.style.left = operateCookie.get("left") + "px";
+        // box.style.top = operateCookie.get("top") + "px";
+
+        // box.onmousedown = function (e) {
+        //     var boxX = e.offsetX,
+        //         boxY = e.offsetY
+        //     document.onmousemove = function (e) {
+        //         box.style.left = e.pageX - boxX + "px";
+        //         box.style.top = e.pageY - boxY + "px";
+        //     }
+        //     document.onmouseup = function (e) {
+        //         box.onmousemove = null;
+        //         operateCookie.set("left", box.offsetLeft,30);
+        //         operateCookie.set("top", box.offsetTop,30);
+        //     }
+        // }
+        let drag = {
+            init(dom) {
+                this.dom = dom;
+                this.bindEvent();
+            },
+            bindEvent() {
+                this.dom.onmousedown = this.mouseDown.bind(this);
+            },
+            mouseDown(e) {
+                document.onmousemove = this.mouseMove.bind(this);
+                // document.onmouseup = this.mouseUp();
+
+
+                this.disX = e.clientX - this.dom.offsetLeft;
+                this.disY = e.clientY - this.dom.offsetTop;
+            },
+            mouseMove(e) {
+
+            }
+        }
+        drag.init();
+    </script>
+</body>
+
+</html>

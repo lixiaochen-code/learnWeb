@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.localstorage</title>
+</head>
+
+<body>
+    <script>
+        // cookie不足
+        // 大小kb 数量50 
+        // 本职工作不是作为本地存储 而是保持请求状态        无法存储大量数据
+
+
+        // web Storage   LocalStorage   sessionStorage
+        // 5MB      不能跨域             
+
+        // LocalStorage     sessionStorage
+        // 没有时间限制         有时间限制
+        // 本地存储             session会话级别,仅仅在当前窗口使用
+
+
+
+        /*
+             Web Storage
+             5Mb 
+ 
+             localStorage
+             sessionStorage
+ 
+             1、length   本地存储数据的数量
+             2、key()    通过索引找到存储的数据
+             3、getItem()    通过键名取到本地存储的数据
+             4、setItem()    设置一个本地存储数据           // 会覆盖   可读可写
+             5、removeItem() 删除一个本地存储数据
+             6、clear()      清空本地存储数据
+        */
+        // console.dir(Storage.length);
+        // console.dir(localStorage.length);
+        // console.dir(sessionStorage);
+
+        localStorage.setItem("name","name");
+        localStorage.setItem("age",18)
+        localStorage.setItem("sex","male");
+        localStorage.setItem("sex","female");
+        let arr = [1, 2, 3, 4, 5, 6];
+        let obj = {1:1,2:2,3:3,4:4}
+        localStorage.setItem("arr",arr);
+        localStorage.setItem("obj",obj);    // [object Object]
+        // JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。
+        localStorage.setItem("obj1", JSON.stringify(obj))
+
+        console.log(localStorage.getItem("arr"));
+        console.log(localStorage.getItem("obj"));
+        // JSON.parse()是Javascript中一个常用的 JSON 转换方法，JSON.parse()可以把JSON规则的字符串转换为JSONObject
+        console.log(JSON.parse(localStorage.getItem("obj1")));
+
+
+
+        localStorage.removeItem("sex");
+    </script>
+</body>
+
+</html>
