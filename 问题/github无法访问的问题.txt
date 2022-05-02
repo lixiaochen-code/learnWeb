@@ -1,0 +1,30 @@
+解决GitHub进不去的问题
+一、在hosts文件中添加IP
+
+1、访问一下两个网址
+http://github.com.ipaddress.com/
+
+
+
+https://fastly.net.ipaddress.com/github.global.ssl.fastly.net
+
+
+
+获取两个IP地址；
+
+
+2、打开本地host文件 C:\Windows\System32\drivers\etc
+
+添加
+
+#　访问 github
+
+140.82.114.3 github.com
+
+199.232.69.194 github.global.ssl.fastly.net
+
+这样就能访问了
+
+3、更新DNS缓存
+
+若还是不能访问，打开CMD运行如下命令 ipconfig /flushdns 再试一下

@@ -1,0 +1,153 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+:root,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #eee;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #354457;
+}
+
+.header {
+    line-height: 70px;
+    color: #B3BCC5;
+}
+
+.header img {
+    vertical-align: middle;
+    /*
+    baseline	默认。元素放置在父元素的基线上。
+    sub	        垂直对齐文本的下标。
+    super	    垂直对齐文本的上标
+    top	        把元素的顶端与行中最高元素的顶端对齐
+    text-top	把元素的顶端与父元素字体的顶端对齐
+    middle  	把此元素放置在父元素的中部。
+    bottom	    使元素及其后代元素的底部与整行的底部对齐。
+    text-bottom	把元素的底端与父元素字体的底端对齐。
+    length	    将元素升高或降低指定的高度，可以是负数。
+    %	        使用 "line-height" 属性的百分比值来排列此元素。允许使用负值。
+    inherit	    规定应该从父元素继承 vertical-align 属性的值。
+    */
+    width: 30px;
+    margin-left: 20px;
+}
+.nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 200px;
+    height: calc(100% - 70px);
+    background-color: #4D5E70;
+    color: #B3BCC5;
+}
+.nav dl dd,
+.nav dl dt{
+    height: 40px;
+    line-height: 40px;
+}
+.nav dl dt {
+    padding-left: 10px;
+}
+.nav dl dd {
+    padding-left: 40px;
+    cursor: pointer;
+}
+.nav dl dd:hover {
+    background-color: #A6AFB8;
+    color: #354457;
+}
+.reightContent {
+    position: absolute;
+    top: 70px;
+    left: 200px;
+    width: calc(100% - 200px);
+}
+.reightContent .student-list table {
+    width: 100%;
+    text-align: center;
+}
+.reightContent .student-list table tr {
+    height: 30px;
+}
+.reightContent .student-list table thead tr th{
+    background-color: #E3E8EE;
+    color: #646987;
+}
+.reightContent .student-list table tbody tr td {
+    background-color: #fff;
+}
+.reightContent .student-list table tbody tr td:last-child button{
+    padding: 5px 10px;
+    color: #fff;
+    border: none;
+}
+.reightContent .student-list table tbody tr td:last-child button:first-child{
+    background-color: #5CB85C;
+}
+.reightContent .student-list table tbody tr td:last-child button:last-child{
+    background-color: #D9534F;
+}
+.reightContent .add-student {
+    width: 250px;
+    margin: 20px auto;
+}
+.reightContent .add-student form label {
+    display: inline-block;
+    width: 50px;
+}
+.reightContent .add-student form div {
+    height: 30px;
+    line-height: 30px;
+}
+.reightContent .add-student form div .btn {
+    height: 30px;
+    width: 80px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.activeSelect {
+    display: none;
+}
+.active {
+    background-color: #ddd;
+    color: #354457;
+}
