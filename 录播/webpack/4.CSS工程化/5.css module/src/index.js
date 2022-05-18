@@ -1,12 +1,20 @@
-import a from "./style/a.css";
-import b from "./style/b.css";
+// import a from "./style/a.css";
+// import b from "./style/b.css";
 
 // style-loader 和 css-loader 同时应用 css-loader 只会暴露一个 类名列表
 
 
-var oDiv = document.createElement("div");
-oDiv.className = a.a
-document.body.appendChild(oDiv);
+// var oDiv = document.createElement("div");
+// oDiv.className = a.a
+// document.body.appendChild(oDiv);
+
+
+// 类似vue的结构
+import "./style/public.css";
+import reight from "./pages/reight/index.js";
+import time from "./pages/time/index.js";
+
+
 
 /**
  * 1.使用classList返回所选元素的类名，是一个数组，一个类名占一个长度(a.classList.length)。

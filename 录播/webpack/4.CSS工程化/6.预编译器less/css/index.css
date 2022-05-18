@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  /*
+        css注释
+    */
+  background-color: #ada;
+}
+.box {
+  background-color: #00ffdd;
+  height: 100px;
+}
+.box1 {
+  background-color: #00ccb1;
+  height: 100px;
+}
+.box2 {
+  background-color: #009985;
+  height: 100px;
+}
+.box3 {
+  background-color: #006658;
+  height: 100px;
+}

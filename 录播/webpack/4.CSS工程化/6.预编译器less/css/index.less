@@ -1,0 +1,92 @@
+// 变量
+// @danger: #D3D3D3;
+// @width: 10px;
+// @height: @width + 20px;
+
+
+
+// 混入 加上两个小括号  不会生成在结果里
+// .center {
+//     position: absolute;
+//     left: 50%;
+//     top: 50%;
+//     transform: translate(-50%, -50%);
+// }
+
+// .center(@type:absolute) {
+//     position: @type;
+//     left: 50%;
+//     top: 50%;
+//     transform: translate(-50%, -50%);
+// }
+
+// .box() {
+//     width: @width;
+//     height: @height;
+//     background-color: @danger;
+//     .center(flexd);
+// }
+
+// .box1 {
+//     .box();
+//     color: red;
+//     .center();
+// }
+
+
+
+// 嵌套
+// #header {
+//     color: black;
+//     >.navigation {
+//       font-size: 12px;
+//     }
+//     .logo {
+//       width: 300px;
+//       &.a {
+//           color: #fff;
+//       }
+//     }
+//     &::after {
+//         content: "";
+//         display: block;
+//     }
+//   }
+
+
+
+@color: rgb(0, 255, 221,1);
+// 函数
+*{
+    padding: 0;
+    margin: 0;
+}
+body {
+    // 定义局部变量 和js作用域一样
+    // 双斜杠   是less注释  不会到编译结果里
+    // 变量声明 后面的会覆盖前面的
+    /*
+        css注释
+    */
+    @colorBg: #ada;
+    background-color: @colorBg;
+}
+.size() {
+    height: 100px;
+}
+.box {
+    background-color: @color;
+    .size()
+}
+.box1 {
+    background-color: darken(@color, 10%);
+    .size()
+}
+.box2 {
+    background-color: darken(@color, 20%);
+    .size()
+}
+.box3 {
+    background-color: darken(@color, 30%);
+    .size()
+}
