@@ -1,0 +1,7 @@
+{
+    "presets": [["@babel/preset-env",{
+        "useBuiltIns": "usage",
+        // 数组第一项是配置名称 第二个是配置对象
+        "corejs" : 3
+    }]]
+}
