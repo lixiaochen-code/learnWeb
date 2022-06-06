@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        // 可以写一个开始事件 和 结束事件来控制
+        let box = document.querySelector(".box");
+        box.addEventListener("touchstart", function () {
+            document.addEventListener("touchmove",function(){
+                console.log("document touchmove");
+            })
+        })
+        box.addEventListener("touchend", function () {
+            document.addEventListener("touchmove",null)
+            console.log("end")
+        })
+    </script>
+</body>
+</html>
