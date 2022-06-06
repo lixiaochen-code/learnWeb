@@ -1,0 +1,1 @@
+let arr=[1,2,3,4,5],counter=0;for(let r=0;r<arr.length;r++)counter+=arr[r];
