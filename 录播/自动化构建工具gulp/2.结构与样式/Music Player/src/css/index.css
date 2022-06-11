@@ -78,7 +78,7 @@ body {
   background-clip: padding-box;
   border-radius: 50%;
   position: absolute;
-  left: 17vw;
+  left: -3vw;
   z-index: 3;
 }
 .wrap .progress .drag .frontBg,
@@ -91,7 +91,7 @@ body {
   margin-top: -0.3vw;
 }
 .wrap .progress .drag .frontBg {
-  width: 20vw;
+  width: 0vw;
   background-color: #fff;
   z-index: 2;
 }

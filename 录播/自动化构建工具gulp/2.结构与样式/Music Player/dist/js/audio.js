@@ -32,8 +32,7 @@
         },
         getDuration(fun) {  // 获取 音频时长
             this.audio.oncanplay = ()=> {
-                fun && fun(this.audio.duration);
-                console.log("================");
+                fun.call(player.progressBar,this.audio.duration);
             }
         }
         // touches：表示当前跟踪的触摸操作的touch对象的数组。

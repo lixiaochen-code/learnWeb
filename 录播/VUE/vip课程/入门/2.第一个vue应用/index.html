@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            padding: 0 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            cursor: pointer;
+            user-select:none;
+            transition: all .5s;
+        }
+        li{
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        /* li:hover{
+            color: #eb3838;
+            margin-bottom: 50px;
+            font-size: 20px;
+        } */
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>{{ name }}</p>
+        <ul>
+            <!-- 第一项商品对象   第二项索引 -->
+            <li v-for="(item, i) in arr">
+                    品牌:{{ item.name }}
+                    <span class="btn" @click="changeNum(item,item.num-1)">-</span>
+                    数量:{{ item.num ? item.num : "无货" }}
+                    <span class="btn" @click="changeNum(item,item.num+1)">+</span>
+                    <button @click="deleteProduct(i)">删除</button>
+            </li>
+        </ul>
+        <p>现有总库存：{{ total }}</p>
+        <button @click="addProdcut">添加</button>
+    </div>
+    <script src="./js/vue.min.js"></script>
+    <script>
+        var vm =  new Vue({
+            el:"#app",
+            data:{
+                name : "商品管理",
+                arr : [
+                    {name:"小米",num: 20},
+                    {name:"华为",num:20},
+                    {name:"OPPO",num: 20},
+                    {name:"vivo",num : 20}
+                ]
+            },
+            computed: {
+              total(){
+                  return this.arr.reduce((a,b) => a += b.num, 0)
+              }  
+            },
+            methods: {
+                changeNum(product, newNum){
+                    if(newNum < 0) {
+                        newNum = 0;
+                    } else if (newNum > 99){
+                        newNum = 99;
+                    }
+                    product.num = newNum;   // 数据变化 页面重新渲染
+                },
+                deleteProduct(i){
+                    this.arr.splice(i, 1);
+                },
+                addProdcut(){
+                    var name = prompt("商品名称");
+                    var num = parseInt(prompt("商品数量"));
+                    this.arr.push({name,num});
+                }
+            }
+        })
+    </script>
+</body>
+</html>

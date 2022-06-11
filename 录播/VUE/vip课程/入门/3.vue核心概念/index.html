@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            padding: 0 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            cursor: pointer;
+            user-select:none;
+            transition: all .5s;
+        }
+        li{
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        /* li:hover{
+            color: #eb3838;
+            margin-bottom: 50px;
+            font-size: 20px;
+        } */
+    </style>
+</head>
+<body>
+    <div>
+        <div id="app"></div>
+    </div>
+    <script src="./js/vue.min.js"></script>
+    <script>
+        var vm =  new Vue({
+            data:{
+                name : "商品管理",
+                arr : [
+                    {name:"小米",num: 20},
+                    {name:"华为",num:20},
+                    {name:"OPPO",num: 20},
+                    {name:"vivo",num : 20}
+                ]
+            },
+
+            // 单根
+            render(h) {
+                return h("div",[
+                    h("h1",["render函数渲染的页面",h("p","这是p标签内容")]),
+                    h("div",[h("h4","aa这是h4标签aaaaaaa"),h("div","这是divBox的子元素")]),
+                    h("div",[h("div","div1"),h("div", "div2"),h("div","div3")]),
+                    h("h3",[h("p",[`${this.arr[0].name}`]),h("p",[`${this.arr[1].name}`]),h("p",[`${this.arr[2].name}`]),h("p",[`${this.arr[3].name}`])])
+                ])
+            }
+        })  
+    </script>
+</body>
+</html>

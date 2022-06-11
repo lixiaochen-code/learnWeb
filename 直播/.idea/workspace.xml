@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f6fc30b6-efc5-4971-ae20-0ced02dc8ded" name="默认变更列表" comment="">
+      <change beforePath="$PROJECT_DIR$/../webpack.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/VUE/vip课程/DuYi-Vue2-main/1. 入门/27. 事件总线/课件/vue知识体系.xmind" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/VUE/vip课程/DuYi-Vue2-main/1. 入门/27. 事件总线/课件/vue知识体系.xmind" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/VUE/vip课程/DuYi-Vue2-main/1. 入门/42. 补充-404页面/课堂代码/my-site/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/VUE/vip课程/DuYi-Vue2-main/1. 入门/42. 补充-404页面/课堂代码/my-site/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/VUE/vue免费课/test1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/VUE/vue免费课/test1/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/webpack/5.js兼容性/2.babel预设/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/webpack/5.js兼容性/2.babel预设/.babelrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/webpack/5.js兼容性/4.在webpack中使用babel/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/webpack/5.js兼容性/4.在webpack中使用babel/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/webpack/==占位==/4. js兼容性/4-4. 在webpack中使用babel/.babelrc" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/webpack/==占位==/4. js兼容性/4-4. 在webpack中使用babel/.babelrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/webpack/==占位==/4. js兼容性/4-4. 在webpack中使用babel/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/webpack/==占位==/4. js兼容性/4-4. 在webpack中使用babel/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/dist/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/dist/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/dist/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/dist/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/dist/js/audio.js" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/dist/js/audio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/dist/js/progressBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/dist/js/progressBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/src/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/src/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/src/css/index.less" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/src/css/index.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/src/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/src/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/src/js/audio.js" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/src/js/audio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/src/js/progressBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../录播/自动化构建工具gulp/2.结构与样式/Music Player/src/js/progressBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/18期/level one 直播课程资料/07.前端工程化webpack/2020.12.09_袁进_webpack直播课课件和源码.zip" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2AJpFsxzaBWXm8kjYVioPMT2Bpl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="f6fc30b6-efc5-4971-ae20-0ced02dc8ded" name="默认变更列表" comment="" />
+      <created>1654737443499</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654737443499</updated>
+      <workItem from="1654737445543" duration="20000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
