@@ -12,7 +12,7 @@
 			text: {
 				type: String,
 				default: "无数据"
-			},
+			}
 		},
 		components: {
 			Icon
@@ -20,11 +20,16 @@
 	}
 </script>
 
-<style>
+<style scoped lang="less">
+	@import url("~@/styles/var.less");
+	@import url("~@/styles/mixin.less");
+
 	.empty-li {
-		width: 500px;
-		height: 500px;
-		display: flex;
-		
+		.self-center();
+		text-align: center;
+		color: @lightWords;
+		.icon-li {
+			font-size: 50px;
+		}
 	}
 </style>

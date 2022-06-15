@@ -20,7 +20,7 @@ const classMap = {
   arrowUp: "iconiconfonticonfonti2copy",
   arrowDown: "iconiconfonticonfonti2",
   empty: "iconempty",
-  chat: "iconliuyan",
+  chat: "iconliuyan"
 };
 export default {
     data(){
