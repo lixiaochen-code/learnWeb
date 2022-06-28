@@ -4,7 +4,11 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "test:Avatar":"vue-cli-service serve ./src/components/Avatar",
+    "test:Contact":"vue-cli-service serve ./src/components/Contact",
+    "test:Menu":"vue-cli-service serve ./src/components/Menu",
+    "test:SiteAside":"vue-cli-service serve ./src/components/SiteAside"
   },
   "dependencies": {
     "core-js": "^3.8.3",

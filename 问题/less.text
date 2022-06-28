@@ -1,0 +1,10 @@
+lighten(@color,10%)        //返回颜色比@color浅10%的颜色
+darken(@color,10%)         //...深
+saturate(@color,10%)       //...饱和比  深
+desaturate(@color,10%)     //...饱和比  浅
+fadein(@color,10%)         //...不透明10%
+fadeout(@color,10%)        //...透明10%
+fade(@color,50%)           //...透明度为50%
+spin(@color,10)            // ...颜色比@color大10的色调
+spin(@color,-10)           // ...颜色比@color小10的色调
+mix(@color1,@color2)       //返回@color1与@color2的混合值
