@@ -1,0 +1,17 @@
+{
+  "name": "pages",
+  "version": "1.0.0",
+  "description": "\"测试\"",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "mock": "^0.1.1",
+    "vue": "^2.6.12"
+  },
+  "devDependencies": {
+    "jquery": "^3.6.0",
+    "react": "^17.0.2"
+  }
+}

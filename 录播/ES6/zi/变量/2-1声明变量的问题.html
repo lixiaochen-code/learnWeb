@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量声明问题</title>
+</head>
+
+<body>
+
+    <script>
+        function text() {
+            if (Math.random() > 0.5) {
+                var a = "abc";
+            }
+            console.log(a);
+        }
+        text();
+
+        // 使用var声明变量
+
+        // 1. 允许重复的变量声明：导致数据被覆盖
+
+        // 2. 变量提升：怪异的数据访问、闭包问题
+
+        // 3. 全局变量挂载到全局对象：全局对象成员污染问题
+    </script>
+</body>
+
+</html>

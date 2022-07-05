@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>6-2数组解构</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			const arr = ["a", "b", "c", "d", [1, 2, 3]];
+
+			// let {
+			// 	0 : n1,
+			// 	4 : {...n2}	
+			// } = arr;
+			// console.log(n1, n2);
+
+			// let [n1, n2,,,n3 = 123] = arr;
+			// console.log(n1,n2,n3)
+			let [n1, , , n2, [, ...n4]] = arr;
+			console.log(n1, n2, n4);
+
+
+			let a = 1,
+				b = 2;
+			[b, a] = [a, b];
+			console.log(a, b);
+			
+		</script>
+	</body>
+</html>

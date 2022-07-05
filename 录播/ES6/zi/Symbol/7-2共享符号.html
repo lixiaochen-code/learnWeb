@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>7-2共享符号</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// # 7-2. 共享符号
+			
+			// 根据某个符号名称（符号描述）能够得到同一个符号
+			
+			// ```js
+			// Symbol.for("符号名/符号描述")  //获取共享符号
+			// ```
+			// Object.keys();				得到对象所以可枚举属性    拿不到Symbol
+			// Object.getOwnPropertyNames() 可得到可枚举属性  		还是拿不到symbol
+			// Object.getOwnPropertySymbols()						可拿到Symbol
+			
+			let obj = {
+				a : 1,
+				b : 2,
+				[Symbol.for("aaa")] : 3
+			}
+			console.log(obj[Symbol.for("aaa")]);
+			
+			
+		</script>
+	</body>
+</html>

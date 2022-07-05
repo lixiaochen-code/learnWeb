@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>8-1事件和回调函数的缺陷</title>
+	</head>
+	<body>
+		<!-- # 8-1. 事件和回调函数的缺陷
+		
+		我们习惯于使用传统的回调或事件处理来解决异步问题
+		
+		事件：某个对象的属性是一个函数，当发生某一件事时，运行该函数
+		
+		```js
+		dom.onclick = function(){
+		
+		}
+		```
+		
+		回调：运行某个函数以实现某个功能的时候，传入一个函数作为参数，当发生某件事的时候，会运行该函数。
+		
+		```js
+		dom.addEventListener("click", function(){
+		
+		})
+		```
+		
+		本质上，事件和回调并没有本质的区别，只是把函数放置的位置不同而已。
+		
+		一直以来，该模式都运作良好。
+		
+		直到前端工程越来越复杂...
+
+		目前，该模式主要面临以下两个问题：
+		
+		1. 回调地狱：某个异步操作需要等待之前的异步操作完成，无论用回调还是事件，都会陷入不断的嵌套
+		2. 异步之间的联系：某个异步操作要等待多个异步操作的结果，对这种联系的处理，会让代码的复杂度剧增 -->
+		<button type="button" id="btn1">给按钮二注册事件</button>
+		<button type="button" id="btn2">给按钮三注册事件</button>
+		<button type="button" id="btn3">弹框</button>
+		
+		<script type="text/javascript">	
+			
+			// 异步处理 ES6 API Promise / （ async await ）
+			// 为什么要用promise 
+			
+			btn1.addEventListener("click", function (e) {
+				btn2.addEventListener("click", function (e) {
+					btn3.addEventListener("click", function (e) {
+						alert("btn3点击事件");
+					})
+				})
+			})
+			
+		</script>
+	</body>
+</html>

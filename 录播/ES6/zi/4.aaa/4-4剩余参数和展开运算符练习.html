@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-4剩余参数和展开运算符练习</title>
+</head>
+<body>
+    <p><input type="number" name="" id="" value="0"></p>
+    <p><input type="number" name="" id="" value="0"></p>
+    <p><input type="number" name="" id="" value="0"></p>
+    <p><input type="number" name="" id="" value="0"></p>
+    <p><input type="number" name="" id="" value="0"></p>
+    <p><input type="number" name="" id="" value="0"></p>
+    <p><input type="number" name="" id="" value="0"></p>
+    <p><input type="number" name="" id="" value="0"></p>
+    <p><input type="number" name="" id="" value="0"></p>
+    <p><input type="number" name="" id="" value="0"></p>
+    <button>按钮</button>
+    <p>
+        <h2>最大值：<span id="max"></span></h2>
+        <h2>最大值：<span id="min"></span></h2>
+    </p>
+
+    <script>
+
+        function getValues() {
+            let inputs = document.querySelectorAll("input");
+            let values = [];
+            for(let i = 0; i < inputs.length; i ++ ) {
+                values.push(+inputs[i].value);
+            }
+            return values;
+        }
+
+        const btn = document.querySelector("button");
+        btn.onclick = () => {
+            max.innerHTML = Math.max(...getValues());
+            min.innerHTML = Math.min(...getValues());
+        }
+
+        function curry (fun, ...agms) {
+            return function (...agums) {
+                let AllAgms = [...agms, ...agums];
+                if (agms.length >= fun.length) {
+                    fun(...AllAgms);
+                } else {
+                    return curry(fun, ...AllAgms);
+                }
+            }
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>

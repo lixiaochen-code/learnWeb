@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		ES6
+		试题：https://www.yuque.com/docs/share/0d2322fd-adb6-4b33-9d61-e79fd463330a?#
+		答案：https://www.yuque.com/docs/share/c9f2fbf2-b555-4ced-aca5-5114e9d3ea54?#
+
+		<p>点击按钮计算数组元素相加后的总和。</p>
+		<button onclick="myFunction()">点我</button>
+
+		<p>数组元素总和: <span id="demo"></span></p>
+		<script type="text/javascript">
+			const a = (...ags) => {
+				console.log(ags)
+			}
+			a(1, 2, 3);
+			// concat	连接两个数组并返回一个新的数组
+			// reduce	
+			// function(total,currentValue, index,arr)	必需。用于执行每个数组元素的函数。
+			// 函数参数:
+			// 参数	描述
+			// total	必需。初始值, 或者计算结束后的返回值。
+			// currentValue	必需。当前元素
+			// currentIndex	可选。当前元素的索引
+			// arr	可选。当前元素所属的数组对象。
+			// initialValue	可选。传递给函数的初始值
+
+
+
+			// var numbers = [65, 44, 12, 4];
+
+			// function getSum(total, num) {
+			//     return total + num;
+			// }
+			// function myFunction(item) {
+			//     document.getElementById("demo").innerHTML = numbers.reduce(getSum);
+			// }
+			let arr = [1, 2, 3, 4, 5];
+			var aa = {};
+			arr.reduce(function(prevValue, icurValue, index, self) {
+				console.log(prevValue, icurValue, aa)
+				return prevValue + icurValue;
+			})
+
+			async function getLocal(url) {
+				try {
+					const result = await fetch(url);
+					const resultText = await result.json();
+					return {
+						resultTime : new Date(),
+						data : resultText,
+						
+					};
+				} catch (err) {
+					console.log(err);
+				}
+			}
+
+			
+		</script>
+	</body>
+</html>

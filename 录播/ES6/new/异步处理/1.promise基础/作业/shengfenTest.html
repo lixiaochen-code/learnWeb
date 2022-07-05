@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="select">
+    </select>
+    <script>
+        function getProvincers(){
+            return fetch("https://study.duyiedu.com/api/citylist")
+            .then(resp => resp.json())
+            .then( resp => resp.data)
+            .then(resp => {
+                return resp.map((it) => ({value:it.value, label:it.label}))
+            })
+        }
+        getProvincers().then(data=>{
+            // console.log(data);
+            // for( let i = 0; i < data.length; i ++ ) {
+            //     const option = document.createElement("option");
+            //     option.value = data[i].value;
+            //     option.innerText = data[i].label;
+            //     select.appendChild(option);
+            // }
+            const html = data.map(ele=> `<option value="${ele.value}">${ele.label}</option>`).join("");
+            select.innerHTML = html;
+
+            console.log(select);
+        },err => {
+            console.log(err);
+        })
+    </script>
+</body>
+</html>

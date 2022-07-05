@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld ref="hellow" msg="Welcome to Your Vue.js App"/>
+    <button @click="hackClick">按钮</button>
   </div>
 </template>
 
@@ -12,6 +13,12 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  methods: {
+    // 点击事件
+    hackClick(){
+      console.log(this.$refs.hellow.$el);
+    }
   }
 }
 </script>

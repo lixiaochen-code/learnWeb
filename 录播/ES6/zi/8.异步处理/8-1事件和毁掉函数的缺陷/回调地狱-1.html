@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>回调地狱-1</title>
+	</head>
+	<body>
+		<p style="color: #f00">回调地狱：某个异步操作需要等待之前的异步操作完成，无论用回调还是事件，都会陷入不断的嵌套</p>
+
+		<button type="button" id="btn1">给按钮二注册事件</button>
+		<button type="button" id="btn2">给按钮三注册事件</button>
+		<button type="button" id="btn3">弹框</button>
+
+
+		<script type="text/javascript">
+			// 异步处理 ES6 API Promise / （ async await ）
+			// 为什么要用promise 
+
+			btn1.addEventListener("click", function(e) {
+				btn2.addEventListener("click", function(e) {
+					btn3.addEventListener("click", function(e) {
+						alert("btn3点击事件");
+					})
+				})
+			})
+		</script>
+	</body>
+</html>

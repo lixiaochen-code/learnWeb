@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>回调地狱-2</title>
+	</head>
+	<body>
+		<!-- 老邓找女神表白 -->
+		<script type="text/javascript">
+			// function judge(result) {
+			// 	if (result) {
+			// 		console.log("邓哥很开心!!!");
+			// 	} else {
+			// 		console.log("邓哥伤心，决定再接再厉!!!");
+			// 	}
+			// }
+
+
+			// function getBoolean() {
+			// 	return Math.random() < .1;
+			// }
+
+			// function biaobai() {
+				
+			// 	setTimeout(() => {
+			// 		console.log("老邓表白了！！！");
+			// 		if (getBoolean()) {
+			// 			return console.log("老邓很开心！！！");
+			// 		} else {
+			// 			console.log("老邓很伤心！！！并感受到了来自女神的深深恶意！！！");
+			// 			setTimeout(() => {
+			// 				console.log("老邓表白了！！！");
+			// 				if (getBoolean()) {
+			// 					return console.log("老邓很开心！！！");
+			// 				} else {
+			// 					console.log("老邓很伤心！！！并感受到了来自女神的深深恶意！！！");
+			// 					setTimeout(() => {
+			// 						console.log("老邓表白了！！！");
+			// 						if (getBoolean()) {
+			// 							return console.log("老邓很开心！！！");
+			// 						} else {
+			// 							console.log("老邓很伤心！！！并感受到了来自女神的深深恶意！！！");
+			// 						}
+			// 					}, 1000);
+			// 				}
+			// 			}, 1000);
+			// 		}
+			// 	}, 1000);
+			// }
+			
+			function biaobai(god, callback) {
+				console.log("老邓表白了！！！");
+				if(Math.random() > .1) {
+					callback(true);
+				} else {
+					callback(false);
+				}
+			}
+		</script>
+	</body>
+</html>

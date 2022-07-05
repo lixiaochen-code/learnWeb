@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const pm = new Promise((resolve, reject)=>{
+            if(Math.random()>0.5) {
+                resolve("成功");
+            } else {
+                reject("失败")
+            }
+        })
+        // catch 已决 失败状态处理
+        pm.catch((data)=>{
+            console.log(data);
+        })
+        
+    </script>
+</body>
+</html>

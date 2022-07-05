@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-2object的新增API</title>
+</head>
+
+<body>
+    <script>
+        //  object.is
+        // # 5 - 2. Object的新增API
+
+        // 1. Object.is
+
+        // 用于判断两个数据是否相等，基本上跟严格相等（===）是一致的，除了以下两点：
+
+        // 1) NaN和NaN相等
+        // 2) +0和 - 0不相等
+
+        // 2. Object.assign
+
+        // 用于混合对象
+
+        // 3. Object.getOwnPropertyNames 的枚举顺序
+
+        // Object.getOwnPropertyNames方法之前就存在，只不过，官方没有明确要求，对属性的顺序如何排序，如何排序，完全由浏览器厂商决定。
+
+        // ES6规定了该方法返回的数组的排序方式如下：
+
+        // - 先排数字，并按照升序排序
+        //     - 再排其他，按照书写顺序排序
+
+        // 4. Object.setPrototypeOf
+
+        // 该函数用于设置某个对象的隐式原型
+
+        // 比如： Object.setPrototypeOf(obj1, obj2) ，
+        // 相当于：  ``` obj1.__proto__ = obj2 ```
+
+
+        // object.is 判断两个对象是否相同   传入要比较的两个参数
+        console.log( NaN === NaN );
+        console.log(-0 === +0);
+        console.log(Object.is(NaN, NaN));
+        console.log(Object.is(+0, -0));
+
+        // object.assign 混合对象   把第二个参数的值覆盖到第一个参数上面，并且改变第一个参数    可以写多个参数  但都是第一个改变
+        const obj1 = {
+            name : "aaa",
+            age : 18,
+            sex : "male",
+            wight : 30
+        }
+        const obj2 = {
+            name : "bbb",
+            age : 20,
+            sex : "female",
+            height : 180
+        }
+        console.log(obj1, obj2, Object.assign({}, obj1, obj2));
+			
+		console.log(Object.getOwnPropertyNames(obj2));
+		
+		// 修改原型
+		Object.setPrototypeOf(obj1, obj2);
+	
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,273 @@
+ https://www.yuque.com/docs/share/0d2322fd-adb6-4b33-9d61-e79fd463330a?#
+
+ 1. A
+	console.log(a);	A is not defined
+	const a = 1;
+	console.log(a);
+	
+ 2. B	
+	const obj = {
+		a: 1,
+		b: 2,
+	};
+	obj.a = obj.b;
+	console.log(obj.a, obj.b);
+	
+ 3. B	split为参数第一个默认值为，	
+	function combine(split=",", ...args) {
+	  return args.join(split);
+	}
+	const str = `I love ${combine(";", "movie", "music", "sports")}`;
+	
+ 4. C	this.a this.b 都为undefined
+	const obj = {
+		a: 1,
+	  b: 2,
+	  sum: () => {
+	  	return this.a + this.b;
+	  };
+	};
+	console.log(obj.sum());
+ 
+ 5. const getSum = (...args1) => (...args2) => args1.concat(args2).reduce((a, b) => a + b, 0);
+	const result = getSum(1, 2, 3)(4, 5, 6);
+	
+	fun(...args1){
+		fun(...args) {
+			args1.concat(args2).reduce(fun(a,b){ return a+b }, 0)
+		}
+	}
+	
+ D
+ 6. C		D
+	ES6中类的特点不包含（    ）
+	A. 不能当作普通函数调用
+	B. 类声明不会被提升
+	C. 类中的代码自动处于严格模式
+	D. 类中的实例方法可以被枚举
+	
+ 7. D		A		不是构造函数	是原型
+	如果A和B是两个类，A是B的父类，B是A的子类，则下面的描述正确的是（    ）
+	A. 可以描述为：B是A
+	B. A和B拥有同一个原型
+	C. A的实例的原型链上有构造函数B
+	D. B的实例的原型链上有构造函数A
+ 8. C
+	 下面的代码，输出结果正确的是（   ）
+	 function method ({ a = 1, b = 2, c = 3 }) {
+		 console.log(a, b, c);
+	 }
+	 method();
+	
+ 9. B
+	对于ES6中的符号Symbol，说法错误的是（     ）
+	A. 符号主要用于产生一个唯一的值
+	B. Symbol可以当作构造函数调用
+	C. 符号可以共享
+	D. ES6规定了一些知名符号，它们每个有着特殊的作用
+ 
+ 10. A
+	ES6使用一种标准的模式Promise来处理异步，它将一个异步任务分为（     ）
+	A. unsettle 和 settled 两个阶段
+	B. pending 和 resolved 两种状态
+	C. resolved 和 rejected 两种状态
+	D. thenable 和 catchable 两个阶段
+ 
+ 11. C		
+	如何理解Promise的构造函数参数（    ）
+	A. 描述如何进行后续处理
+	B. 描述settled阶段如何处理
+	C. 描述在unsettled阶段如何处理
+	D. 如何通向settled阶段不由该参数负责
+	
+ 12. C	then方法开始运行的时候promise已经是已决状态
+	如何理解Promise对象的then方法（    ）
+	A. 通过then方法可以让Promise通向settled阶段
+	B. 通过then方法可以让Promise通向resolved状态
+	C. 通过then方法可以向Promise注册thenable或catchable处理函数
+	D. 通过then方法可以向状态传递数据
+	
+ 13. D	
+	下面哪种做法不能让Promise进入rejected状态（    ）
+	A. 在Promise构造函数的参数方法中抛出错误
+	B. 在Promise构造函数的参数方法中调用reject()
+	C. 在Promise构造函数的参数方法中代码报错
+	D. 调用Promise的catch方法
+	
+ 14. D		B	Promise.all可以将多个Promise实例包装成一个新的Promise实例。同时，成功和失败的返回值是不同的，成功的时候返回的是一个结果数组，而失败的时候则返回最先被reject失败状态的值。
+	当你需要同时发送多个请求，并把所有响应的结果进行合并，你应该选择（    ）
+	A. Promise的串联
+	B. Promise.all
+	C. Promise.race
+	D. 使用async和await
+	
+ 15. B
+	关于async和await说法正确的是（    ）
+	A. async修饰的方法内必须使用await
+	B. async修饰的方法必定返回Promise对象
+	C. await必须等待一个Promise对象
+	D. await语句之后的代码可能仍然是同步代码
+ 
+ 16. A
+	Fetch Api相比于XHR的优势包括（    ）
+	A. 功能分割更加精细
+	B. 摒弃了ajax模式
+	C. 使用的是回调模式
+	D. 使用的是事件模式
+	
+ 17. B
+	对于文件上传表单字段，说法正确的是（     ）
+	A. 表单字段名必须是file
+	B. 表单字段名需要和服务器进行约定
+	C. 表单字段内容是文件名
+	D. 表单格式必须是multipart/form-data
+ 
+ 18. A
+	下面的哪种对象不是可迭代对象（     ）
+	A. Object
+	B. Array
+	C. NodeList
+	D. String
+ 
+ 19. A
+	对于yield关键字理解正确的是（     ）
+	A. yield后面的表达式表示迭代的结果
+	B. yield会导致浏览器运行阻塞
+	C. yield语句的返回结果是后面表达式的结果
+	D. yield语句可以用到普通函数中
+	
+ 20. B		D
+	 关于生成器函数理解正确的是（    ）
+	 A. 生成器函数调用后会运行到第一个yield位置停止
+	 B. 生成器函数本质上就是迭代器
+	 C. 生成器函数返回的是一个Promise对象
+	 D. 生成器函数返回的一定是一个可迭代对象
+ 
+ 21. A
+	关于set和map集合的说法正确的是（    ）
+	A. set集合没有filter方法
+	B. map集合的值（value）是唯一的
+	C. map集合在迭代时，每次迭代得到的是一个普通对象
+	D. 用set构造函数初始化集合内容时，参数必须是一个数组
+ 
+ 22. C
+	关于Reflect的说法，正确的是（   ）
+	A. Reflect只能用于代理中
+	B. Reflect 出现后，过去的相关语法已被淘汰
+	C. Reflect使用api的形式暴露JS底层实现
+	D. Reflect.defineProperty和Object.defineProperty完全一样
+	
+ 23. C
+	 如果要从一个学生数组中找到姓名为“李华”的学生对象，最合适的API是（    ）
+	 A. includes
+	 B. indexOf
+	 C. find
+	 D. findIndex
+	 
+ 24.		D		类型化数组是建立在ArrayBuffer对象的基础上的。它的作用是，分配一段可以存放数据的连续内存区域。
+	关于ArrayBuffer和类型化数组，说法正确的是（    ）
+	A. ArrayBuffer可以存储任何类型的数据
+	B. 类型化数组可以存储任何类型的数据
+	C. ArrayBuffer只能通过类型化数组操作数据
+	D. 类型化数组可以降低内存消耗
+	
+ 二、
+ 1. 过去，一个函数总是可以有两种使用方式：直接调用和使用关键字new， 这模糊了函数的功能，ES6之后，我们可以通过                 来判断 使用者使用了何种方式调用函数。
+ 1. new.target
+  
+ 2. 在使用解构时，我们可以通过符号      来修改解构到变量的名称
+ 2. :
+ 
+ 3. 将下面的代码补充完整
+ /**
+  * 请求指定的地址，得到服务器返回的json对象
+  * @param {*} url 
+  */
+ const req = _______ => {
+     return await fetch(url).then(________=> resp.json());
+ }
+  
+ //请求students.json，输出得到的结果
+ req("students.json")._________(resp => console.log(resp))
+  
+ 3. async (url)  resp    then
+ 
+ 4. ES6对函数做了大量改进，其中，          解决了参数默认值的问题，           解决了参数数量不固定的问题。
+ 
+ 4. 默认参数   剩余参数
+ 
+ 5. Promise可以从unsettled阶段推向settled阶段，调用resolve函数  可以进入          状态，调用reject函数或        可以进入        状态。
+ 5. resolved  未捕获的错误  rejected
+  
+ 6. 一个可迭代对象，必定满足__________，即包含一个知名符号Sym bol.__________。
+ 6. 可迭代协议   iterator
+ 
+ 三、
+ 1. 阐述Promise解决了什么问题，它如何解决的，async和await又解决了什么问题？
+	1.	
+		1.回调地狱问题
+		2.代码的可读性问题
+		3.信任问题
+async和await是ES7的关键字，用于进一步简化Promise的操作，它可 以让我们像编写同步代码那样处理Promise
+ 
+ 2. 阐述什么是迭代器、可迭代协议、可迭代对象、生成器
+	2. 迭代器 ：如果一个对象具有next方法，并且该方法返回一个对象，该对象{value:value, done:false/true}
+	可迭代协议 迭代对象：如果一个对象里面有知名属性symbol.itnerator 并且该属性是一个迭代器构造函数
+	生成器：生成器是一个通过构造函数Generator创建的对象，生成器既是一个迭代器，同时又是一个可迭代对象
+	
+ 四、
+ 1. 有一个字符串数组urls，里面存放了很多的请求地址，现在需要同时向这些地址发送ajax请求，并把每次请求的JSON结果按照响应的先后顺序依次保存到一个新数组results里面，当所有请求完成后，把新数组results输出
+  
+ results数组中每一项的对象格式如下：
+ {
+   requestTime: 日期对象,   //开始请求的时间
+   data: 对象,  //服务器响应的结果
+   responseTime: 日期对象   //响应的时间
+ }
+ 1. 
+ async function getLocal(url) {
+ 	try {
+ 		const result = await fetch(url);
+ 		const resultText = await result.json();
+ 		return {
+ 			resultTime : new Date(),
+ 			data : resultText,
+ 			
+ 		};
+ 	} catch (err) {
+ 		console.log(err);
+ 	}
+ }
+ const urls = ["1.json", "2.json"]; //模拟urls数组
+ const results = []; //用于存放结果
+ const proms = urls.map(async (url) => {
+     const r = {
+         requestTime: new Date()
+     }
+     r.data = await fetch(url).then(resp => resp.json());
+     r.responseTime = new Date();
+     results.push(r);
+ })
+ Promise.all(proms).then(() => {
+     console.log(results);
+ })
+ 
+ 2.编写一个函数createDomProxy，该函数返回一个DOM对象的代理，该代  理可以将DOM对象以on开头的属性（即事件）变为Promise对象，可以让后  续的开发者这样使用这个函数createDomProxy：
+ 2.
+ function createDomProxy(dom) {
+    return new Proxy(dom, {
+        get(target, prop) {
+            if (prop.startsWith("on")) {
+                return new Promise(resolve => {
+                    target.addEventListener(prop.replace("on", ""), e => {
+                        resolve(e);
+                    }, { once: true })
+                })
+            }
+            return Reflect.get(target, prop);
+        }
+    })
+}
+ 
+ 
+ 

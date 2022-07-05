@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>3.Request</title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			async function getLocal(url, obj) {
+				try {
+					const result = await fetch(url, obj);
+					// const resultText = await result.text(); // 返回普通文本格式 字符串
+					const resultText = await result.json(); // 直接返回字符串
+					return resultText;
+				} catch (err) {
+					console.log(err);
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>5-6类的继承</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// # 5-6. 类的继承
+
+			// 如果两个类A和B，如果可以描述为：B 是 A，则，A和B形成继承关系
+
+			// 如果B是A，则：
+
+			// 1. B继承自A
+			// 2. A派生B
+			// 3. B是A的子类
+			// 4. A是B的父类
+
+			// 如果A是B的父类，则B会自动拥有A中的所有实例成员。
+
+
+
+			// 新的关键字：
+
+			// - extends：继承，用于类的定义
+			// - super
+			//   - 直接当作函数调用，表示父类构造函数
+			//   - 如果当作对象使用，则表示父类的原型
+
+
+			// 注意：ES6要求，如果定义了constructor，并且该类是子类，则必须在constructor的第一行手动调用父类的构造函数
+
+			// 如果子类不写constructor，则会有默认的构造器，该构造器需要的参数和父类一致，并且自动调用父类构造器
+
+			// 【冷知识】
+
+			// - 用JS制作抽象类
+			//   - 抽象类：一般是父类，不能通过该类创建对象
+			// - 正常情况下，this的指向，this始终指向具体的类的对象
+
+
+			// ES5写法
+			// function Animal(type, name, age, sex) {
+			//     this.type = type;
+			//     this.name = name;
+			//     this.age = age;
+			//     this.sex = sex;
+			// }
+			// Animal.prototype.print = function () {
+			//     console.log(`【种类】：${this.type}`);
+			//     console.log(`【名字】：${this.name}`);
+			//     console.log(`【年龄】：${this.age}`);
+			//     console.log(`【性别】：${this.sex}`);
+			// }
+
+			// function Dog(name, age, sex) {
+			//     //借用父类的构造函数
+			//     Animal.call(this, "犬类", name, age, sex);
+			// }
+
+			// Object.setPrototypeOf(Dog.prototype, Animal.prototype);
+
+			// const d = new Dog("旺财", 3, "公");
+			// d.print();
+			// console.log(d);
+
+			class animal {
+				constructor(type, name, age, sex) {
+					if (new.target == animal) {
+						throw new TypeError("不能直接创建动物对象");
+					}
+					this.type = type;
+					this.name = name;
+					this.age = age;
+					this.sex = sex;
+				};
+				print() {
+					console.log(this.aaa);
+				}
+				jiao() {
+					throw new TypeError("怎么叫的！");
+				}
+			}
+
+			class dog extends animal {
+				constructor(name, age, sex) {
+					super("狗", name, age, sex);
+					this.aaa = 123;
+				};
+				print() {
+					super.print();
+					console.log(this);
+				}
+				static weight = 20;
+				jiao() {
+					console.log("汪汪汪！！！");
+				}
+			}
+
+			var sun = new dog("张龙", 20, "人妖");
+		</script>
+	</body>
+</html>

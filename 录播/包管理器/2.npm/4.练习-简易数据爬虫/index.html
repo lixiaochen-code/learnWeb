@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>简易数据爬虫</title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<style type="text/css">
+
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<template id="Hellow" v-if="false">
+				<div class="imgBox">
+					<img>
+				</div>
+			</template>
+			<h1 ref="myh3"></h1>
+			<hellow></hellow>
+			
+		</div>
+		<script type="text/javascript">
+			// var hellow = Vue.extend({
+			// 	data() {
+			// 		src : ""
+			// 	},
+			// 	template:"#Hellow"
+			// })
+			// 全局组件
+			// Vue.component("Hollow",hellow);
+			var vm = new Vue({
+				el:"#app",
+				data : {
+					src : ""
+				},
+				components:{
+					hellow : {
+						template:"#Hellow"
+					}
+				},
+				methods:{
+					getEle(){
+						console.log(this.$refs.myh3.innerText)
+					}
+				}
+			})
+			vm.getEle()
+		</script>
+	</body>
+</html>

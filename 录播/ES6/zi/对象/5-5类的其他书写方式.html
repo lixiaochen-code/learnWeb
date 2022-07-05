@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+		<script type="text/javascript">
+			// # 5-5. 类的其他书写方式
+
+			// 1. 可计算的成员名
+
+			// 2. getter和setter
+
+			// Object.defineProperty 可定义某个对象成员属性的读取和设置
+
+			// 使用getter和setter控制的属性，不在原型上
+
+			// 3. 静态成员
+
+			// 构造函数本身的成员
+
+			// 使用static关键字定义的成员即静态成员
+
+			// 4. 字段初始化器（ES7）
+
+			// 注意：
+
+			// 1). 使用static的字段初始化器，添加的是静态成员
+			// 2). 没有使用static的字段初始化器，添加的成员位于对象上
+			// 3). 箭头函数在字段初始化器位置上，指向当前对象
+
+			// 5. 类表达式
+
+			// 6. [扩展]装饰器（ES7）(Decorator)
+
+			// 横切关注点
+
+			// 装饰器的本质是一个函数
+
+
+
+
+			const printName = print;
+
+			class animal {
+				
+				// 字段初始化器    有些属性有固定的值
+				// *****注意*****
+				// 1). 使用static的字段初始化器，添加的是静态成员
+				
+				// 2). 没有使用static的字段初始化器，添加的成员位于对象上
+				
+				// 3). 箭头函数在字段初始化器位置上，指向当前对象
+				
+				a = 1;
+				b = 2;
+				c = 3;
+				
+				
+				constructor(type, name, age, sex) {
+					this.type = type;
+					this.name = name;
+					this.age = age;
+					this.sex = sex;
+				};
+
+				set age(age) {
+					if (typeof age != "number") throw new TypeError("年龄格式不对");
+
+					if (age >= 0 && age <= 120) {
+						this._age = age;
+					} else {
+						throw new TypeError("年龄格式不对");
+					}
+				}
+
+				get age() {
+					return this._age + "岁";
+				}
+
+				static height = 20;
+				static width = 20;
+				static text(a) {
+					console.log(a);
+				}
+				
+				print() {
+					console.log(this);
+					console.log(`名字：${this.name}`);
+				};
+			}
+
+			let obj = new animal("狗", "旺财", 22, "公");
+			console.log(obj, obj.age = 120);
+			obj.print();
+			
+			
+
+			for (let prop in obj) {
+				console.log(prop);
+			}
+
+
+
+
+
+
+
+			// ES 5
+			// let object1 = {};
+			// let str = "狗"
+			// setDog(dog, str)
+			// const setDog = (x, value) => {
+			// 		Object.defineProperties(object1, {
+			// 				x: {
+			// 					value
+			// 				},
+			// 			}
+			// 		}
+
+
+			let obj1 = {};
+			let setObj = (target, ...agms) => {
+				console.log(this.arguments);
+				let _agms = [...agms];
+				console.log(_agms);
+				if (_agms) {
+					for (let i = 0; i < _agms.length / 2; i++) {
+						Object.defineProperty(target, _agms[i * 2], {
+							value: _agms[i * 2 + 1],
+							eenumerable: true,
+							configurable: true,
+							writable: false
+						});
+					}
+				}
+			}
+
+			// for (let i in obj1) {
+			// 	console.log(obj1[i]);
+			// }
+
+			// let _constructors = (target, obj, func, type) => {
+			// 	func(obj[type]);
+			// 	if (_obj) {
+			// 		for (let prop in target) {
+			// 			Object.defineProperty(target, prop, {
+			// 				value: target[prop]
+			// 			})
+			// 		}
+			// 	}
+
+			// }
+			// Object.defineProperty(obj1, "key", {
+			// 	enumerable: false,
+			// 	configurable: false,
+			// 	writable: false,
+			// 	value: "static"
+			// });
+
+			setObj(obj1, "name", "李晨", "age", 12, "sex", "男");
+			console.log(obj1);
+			for (let prop in obj1) {
+				console.log(prop);
+			}
+
+
+
+			// - 箭头函数中，不存在this、arguments、new.target，如果使用了，则使用的是函数外层的对应的this、arguments、new.target
+			// - 箭头函数没有原型
+			// - 箭头函数不能作用构造函数使用
+		</script>
+	</body>
+</html>
