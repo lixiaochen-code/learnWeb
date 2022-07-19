@@ -38,13 +38,18 @@ export default {
       height: 100%;
       background-color: @dark;
       flex: 0 0 auto;
+      position: relative;
     }
     .content{
+      position: relative;
+
       height: 100%;
       width: 100%;
       flex: 1 1 auto;
     }
     .right {
+      position: relative;
+
       width: 200px;
       height: 100%;
       background: #ada;

@@ -1,6 +1,6 @@
 <template>
 	<div class="imageloader-li">
-		<img class="img" :src="src" alt="" ref="img" @load="imgLoader()" >
+		<img class="img" :src="src" alt="" ref="img" @load="imgLoader" >
 		<img class="placeholder" ref="placeholder" :src="placeholder" alt="" :style="{
 			opacity: opacityLoad,
 			transition: `${durantion}ms`

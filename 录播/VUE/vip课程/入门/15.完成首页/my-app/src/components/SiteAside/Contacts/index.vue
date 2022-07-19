@@ -29,6 +29,8 @@ export default {
         width: 100%;
         position: absolute;
         margin-left: 18px;
+        list-style: none;
+        margin: 0;
         li:nth-of-type(1) .contact-li {
             top: 0px;
         }

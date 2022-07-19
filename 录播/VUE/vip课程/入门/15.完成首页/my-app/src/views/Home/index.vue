@@ -1,18 +1,36 @@
 <template>
-  <div class="home-li">
-    <ul>
-      <li v-for="item in imgData" :key="item.id">
-        <CarouselItem :obj="item" />
+  <div class="home-li" @wheel="changeImg($event)">
+    <ul class="imgBox" ref="imgBox" @transitionend="changeTransitionEnd()">
+      <li v-for="item in imgList" :key="item.id">
+        <CarouselItem
+          :obj="item"
+          :scale="1.1"
+          :imgHeight="imgHeight"
+          :imgWitdh="imgWitdh"
+        />
       </li>
     </ul>
-    <div class="arrowUp">
+    <div
+      class="arrowUp"
+      @click="changeImg($event, current - 1)"
+      v-show="current != 1"
+    >
       <Icon type="arrowUp" />
     </div>
-    <div class="arrowDown">
+    <div
+      class="arrowDown"
+      @click="changeImg($event, current + 1)"
+      v-show="current != imgList.length"
+    >
       <Icon type="arrowDown" />
     </div>
-    <ul class="circle">
-      <li class="active" v-for="item in imgData" :key="item.id"></li>
+    <ul class="cbtn">
+      <li
+        :class="{ active: item.id == current }"
+        v-for="item in imgList"
+        :key="item.id"
+        @click="changeImg($event, item.id)"
+      ></li>
     </ul>
   </div>
 </template>
@@ -25,17 +43,69 @@ import Icon from "@/components/Icon";
 export default {
   data() {
     return {
-      imgData: [],
+      imgList: [],
+      current: 1, // 当前图片
+      changeWheel: false,
+      imgHeight: null,
+      imgWitdh: null,
     };
-  },
-  async created() {
-    this.imgData = await banner();
-    console.log(this.imgData);
   },
   components: {
     ImageLoader,
     CarouselItem,
     Icon,
+  },
+  methods: {
+    changeImg(e, index) {
+      // console.log(e.deltaY);
+      let i = this.current;
+      if (index) {
+        i = index;
+      }
+      if (e.deltaY) {
+        if (this.changeWheel) {
+          return;
+        }
+        if (e.deltaY > 200) {
+          this.changeWheel = true;
+          i++;
+        } else if (e.deltaY < -200) {
+          this.changeWheel = true;
+          i--;
+        }
+        // console.log(i);
+      }
+      this.limiter(i);
+      this.$refs.imgBox.style.marginTop =
+        -this.imgHeight * (this.current - 1) + "px";
+    },
+    limiter(index) {
+      if (index < 1) {
+        index = 1;
+      } else if (index > this.imgList.length) {
+        index = this.imgList.length;
+      }
+      this.current = index;
+    },
+    changeTransitionEnd() {
+      this.changeWheel = false;
+    },
+  },
+  async created() {
+    this.imgList = await banner();
+    console.log(this.imgList);
+  },
+  mounted() {
+    this.imgHeight = this.$refs.imgBox.offsetHeight;
+    this.imgWitdh = this.$refs.imgBox.offsetWidth;
+    let _this = this;
+    window.addEventListener("resize", function () {
+      _this.imgWitdh = _this.$refs.imgBox.offsetWidth;
+      _this.imgHeight = _this.$refs.imgBox.offsetHeight;
+    });
+  },
+  destroyed() {
+    window.removeEventListener("resize",null);
   },
 };
 </script>
@@ -43,74 +113,90 @@ export default {
 <style scoped lang="less">
 @import "~@/styles/mixin.less";
 @import "~@/styles/var.less";
-
 .home-li {
+  background-color: @dark;
   width: 100%;
   height: 100%;
-  position: relative;
-  background-color: @dark;
+  position: absolute;
+  overflow: hidden;
+  .imgBox {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: 500ms;
+    li {
+      width: 100%;
+      height: 100%;
+    }
+  }
   & > div {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: all .3s;
+    .self-center();
+    cursor: pointer;
     color: gray;
-    i {
+    .icon-li {
       font-size: 32px;
-      cursor: pointer;
     }
     &.arrowUp {
-      top: 15px;
-      animation: jump-up 2s  ease-in-out infinite;
+      top: 25px;
+      animation: jump-up 2s ease-out infinite;
     }
     &.arrowDown {
       top: auto;
-      bottom: 15px;
-      animation: jump-down 2s  ease-in-out infinite;
+      bottom: 25px;
+      animation: jump-down 2s ease-out infinite;
     }
   }
-  .circle {
-      .self-center();
-      left: auto;
-      right: 20px;
+  .cbtn {
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
+    list-style: none;
+    margin: 0;
+    padding: 0;
     li {
-      width: 8px;
-      height: 8px;
-      margin-bottom: 10px;
-      box-sizing: border-box;
-      border: 1px solid #fff;
-      background-color: gray;
+      padding: 0;
+      cursor: pointer;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      &:nth-of-type(3) {
-      margin-bottom: 0;
-    }
-      &.active{
-        background: #fff;
+      background-color: gray;
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
       }
+      &.active {
+        background-color: white;
+      }
+      box-sizing: border-box;
+      border: 1px solid white;
     }
-    
   }
 }
+
+@jump: 10px;
 @keyframes jump-up {
   0% {
-    transform: translate(-50%, -10px);
+    transform: translate(-50%, -@jump);
   }
   50% {
-    transform: translate(-50%, 10px);
+    transform: translate(-50%, @jump);
   }
   100% {
-    transform: translate(-50%, -10px);
+    transform: translate(-50%, -@jump);
   }
 }
 @keyframes jump-down {
   0% {
-    transform: translate(-50%, 10px);
+    transform: translate(-50%, @jump);
   }
   50% {
-    transform: translate(-50%, -10px);
+    transform: translate(-50%, -@jump);
   }
   100% {
-    transform: translate(-50%, 10px);
+    transform: translate(-50%, @jump);
   }
 }
 </style>
