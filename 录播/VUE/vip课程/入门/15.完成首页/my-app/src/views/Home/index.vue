@@ -6,7 +6,7 @@
           :obj="item"
           :scale="1.1"
           :imgHeight="imgHeight"
-          :imgWitdh="imgWitdh"
+          :imgWidth="imgWidth"
         />
       </li>
     </ul>
@@ -47,7 +47,7 @@ export default {
       current: 1, // 当前图片
       changeWheel: false,
       imgHeight: null,
-      imgWitdh: null,
+      imgWidth: null,
     };
   },
   components: {
@@ -66,10 +66,10 @@ export default {
         if (this.changeWheel) {
           return;
         }
-        if (e.deltaY > 200) {
+        if (e.deltaY > 50) {
           this.changeWheel = true;
           i++;
-        } else if (e.deltaY < -200) {
+        } else if (e.deltaY < -50) {
           this.changeWheel = true;
           i--;
         }
@@ -97,10 +97,10 @@ export default {
   },
   mounted() {
     this.imgHeight = this.$refs.imgBox.offsetHeight;
-    this.imgWitdh = this.$refs.imgBox.offsetWidth;
+    this.imgWidth = this.$refs.imgBox.offsetWidth;
     let _this = this;
     window.addEventListener("resize", function () {
-      _this.imgWitdh = _this.$refs.imgBox.offsetWidth;
+      _this.imgWidth = _this.$refs.imgBox.offsetWidth;
       _this.imgHeight = _this.$refs.imgBox.offsetHeight;
     });
   },
@@ -114,11 +114,18 @@ export default {
 @import "~@/styles/mixin.less";
 @import "~@/styles/var.less";
 .home-li {
-  background-color: @dark;
+  // background-color: @dark;
   width: 100%;
   height: 100%;
   position: absolute;
   overflow: hidden;
+
+
+  // width: 500px;
+  // height: 300px;
+  // border: 1px solid red;
+  // margin: 100px 100px;
+  // overflow: visible;
   .imgBox {
     width: 100%;
     height: 100%;
@@ -162,7 +169,7 @@ export default {
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background-color: gray;
+      background-color: rgb(0, 0, 0);
       margin-bottom: 10px;
       &:last-child {
         margin-bottom: 0;

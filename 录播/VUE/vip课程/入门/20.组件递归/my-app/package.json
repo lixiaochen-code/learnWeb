@@ -1,0 +1,30 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:Avatar": "vue-cli-service serve ./src/components/Avatar",
+    "test:Contact": "vue-cli-service serve ./src/components/Contact",
+    "test:Menu": "vue-cli-service serve ./src/components/Menu",
+    "test:SiteAside": "vue-cli-service serve ./src/components/SiteAside",
+    "test:Layout": "vue-cli-service serve ./src/components/Layout/main.js",
+    "test:Loading": "vue-cli-service serve ./src/components/Loading/main.js",
+    "test:RightList": "vue-cli-service serve ./src/views/Blog/components/RightList"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "core-js": "^3.8.3",
+    "mockjs": "^1.1.0",
+    "vue": "^2.6.14",
+    "vue-router": "^3.1.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "less": "^4.0.0",
+    "less-loader": "^8.0.0",
+    "vue-template-compiler": "^2.6.14"
+  }
+}
