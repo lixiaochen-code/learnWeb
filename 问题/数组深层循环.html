@@ -1,22 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        var arr = [1,2,3,4,[5,6,7,5],5,[1,5],9];
-        function forArr(arr, fun){
-            return arr.map(e => {
+        var arr = [
+            {
+                "name": "概述",
+                "anchor": "article-md-title-1",
+                "isSelect": false
+            },
+            {
+                "name": "简单请求",
+                "anchor": "article-md-title-2",
+                "children": [
+                    {
+                        "name": "简单请求的判定",
+                        "anchor": "article-md-title-3"
+                    },
+                    {
+                        "name": "简单请求的交互规范",
+                        "anchor": "article-md-title-4"
+                    }
+                ],
+                "isSelect": false
+            },
+            {
+                "name": "需要预检的请求",
+                "anchor": "article-md-title-5",
+                "isSelect": false
+            },
+            {
+                "name": "附带身份凭证的请求",
+                "anchor": "article-md-title-6",
+                "isSelect": false
+            },
+            {
+                "name": "一个额外的补充",
+                "anchor": "article-md-title-7",
+                "isSelect": false
+            }
+        ];
+        // 研究一下数组结构 内部数据数据类型
+        // function forArr(arr, fun) {
+        //     return arr.map(e => {
+        //         if ( e.children && Array.isArray(e.children)) {
+        //             return {
+        //                 ...e,
+        //                 children:forArr(e.children, fun)
+        //             };
+        //         }
+        //         return fun && fun(e);
+        //     });
+        // }
+        // function forArr(arr, fun) {
+        //     return arr.map(e => {
+        //         for (let key in e) {
+        //             if (Array.isArray(e[key])) {
+        //                 e[key] = e[key].map(e => {
+        //                     return fun(e);
+        //                 })
+        //             }
+        //         }
+        //         return fun(e);
+        //     });
+        // }
+        // let aaa = forArr(arr, function (e) {
+        //     return {
+        //         ...e,
+        //         isSelect: ""
+        //     };
+        // })
+        // console.log(aaa);
+
+        // var obj = {name:1,age:1,page:1,limit:1};
+        // for (const key in obj) {
+        //     console.log(key);
+        // }
+        // var arr1 = [1,2,3,4];
+        // for (const key in arr1) {
+        //     console.log(key);
+        // }
+
+        // let arr1 = [1, [1, 2], 2, 3];
+        // // console.log(arr1.map(e=>{
+        // //     e = e + 1;
+        // //     return e;
+        // // }));
+        // console.log(forArr(arr1, function (e) {
+        //     return e + 1
+        // }))
+        
+
+        // 数组深层 操作
+        var arr1 = [1,2,3,4,5,[4,5,6],12,2,[21,3,5,5,[1,2,3]]];
+        function arrMap(arr,fun) {
+            return arr.map(e=>{
                 if(Array.isArray(e)){
-                   return forArr(e,fun);
+                    return arrMap(e,fun);
                 }
-                return fun && fun(e);
-            });
+                return fun(e);
+            })
         }
+        console.log(arrMap(arr1,function(e){
+            return e + 1
+        }))
+        console.log(arrMap(arr,function(e){
+            return {
+                ...e,
+                isSelect : "更改"
+            }
+        }))
     </script>
 </body>
+
 </html>

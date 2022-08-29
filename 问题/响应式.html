@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        pre{
+            font-size: 20px;
+        }
+        pre .title {
+            font-size: 20px;
+            color: #f00;
+        }
+        pre .title .box {
+            width: 500px;
+            height: 300px;
+            color: black;
+            font-size: 20px;
+
+            background-color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+        
+        这里显示的是obj.name当数据更改 页面的数据也会更改
+        <div class="title">
+            这里的数据会变化
+            
+        <div class="box">
+        </div>
+        </div>
+    </pre>
+    <script>
+        function objFun(data, key, val,callback) {
+            Object.defineProperty(data,key,{
+                enumerable: true,
+                configurable: true,
+                get() {
+                    console.log('数据读取了');
+                    return val;
+                },
+                set(newVal) {
+                    console.log('数据更改了');
+                    if(val === newVal) return;
+                    val = newVal;
+                    callback && callback();
+                    return val;
+                }
+            })
+        }
+        var obj = {}
+        console.log(obj)
+        objFun(obj,"name","adad",function(){
+            const box = document.querySelector("pre .title .box");
+            box.innerText = obj.name;
+        });
+    </script>
+</body>
+
+</html>
