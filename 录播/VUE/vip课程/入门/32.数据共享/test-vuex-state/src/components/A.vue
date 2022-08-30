@@ -1,26 +1,32 @@
 <template>
-    <div class="AVue">
-      <p>
-        数字大小为
-      </p>
-      <h1>{{ count }}</h1>
-      <div class="btnBox">
-        <button>减小</button>
-        <button>异步增加</button>
-      </div>
+  <div class="AVue">
+    <p>数字大小为</p>
+    <h1>{{ $store.state.count }}</h1>
+    <div class="btnBox">
+      <button @click="handleReduce">减小</button>
+      <button @click="handleAsyncIncrease">异步增加</button>
     </div>
-  </template>
+  </div>
+</template>
   
   <script>
-  export default {
-    name: "AVue",
-    data() {
-      return {
-        count: 1,
-      };
+export default {
+  name: "AVue",
+  data() {
+    return {
+      count: 1,
+    };
+  },
+  methods: {
+    handleReduce() {
+      this.$store.commit("reduce");
     },
-  };
-  </script>
+    handleAsyncIncrease(){
+      this.$store.dispatch('asyncIncrease')
+    }
+  },
+};
+</script>
 
   <style scoped lang="less">
 .AVue {
@@ -32,17 +38,17 @@
   height: 170px;
   border: 1px solid black;
   border-radius: 8px;
-  p{
+  p {
     text-align: center;
     line-height: 65px;
   }
-  h1{
+  h1 {
     text-align: center;
   }
-  .btnBox{
+  .btnBox {
     text-align: center;
     line-height: 65px;
-    button{
+    button {
       padding: 2px 5px;
       margin: 0 2px;
     }

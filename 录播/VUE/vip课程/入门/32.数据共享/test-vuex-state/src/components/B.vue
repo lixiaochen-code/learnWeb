@@ -3,10 +3,10 @@
     <p>
         数字大小为
       </p>
-      <h1>{{ count }}</h1>
+      <h1>{{ $store.state.count }}</h1>
       <div class="btnBox">
-        <button>异步减小</button>
-        <button>增加</button>
+        <button @click="handleAsyncReduce">异步减小</button>
+        <button @click="handleIncrease">增加</button>
       </div>
   </div>
 </template>
@@ -19,6 +19,14 @@ export default {
       count: 1,
     };
   },
+  methods:{
+    handleIncrease(){
+      this.$store.commit('increase')
+    },
+    handleAsyncReduce(){
+      this.$store.dispatch("asyncReduce")
+    }
+  }
 };
 </script>
 
